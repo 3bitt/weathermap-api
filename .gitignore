@@ -1,0 +1,5 @@
+*.code-workspace
+**/migrations/
+example.json
+db.sqlite3
+__pycache__
