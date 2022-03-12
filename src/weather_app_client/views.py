@@ -6,8 +6,12 @@ from weather_app_client.weathermap_client import WeatherMapClient
 
 
 class CityWeatherView(viewsets.ViewSet):
+    http_method_names = ['get', 'post', 'options']
     
     def create(self, request):
+        """
+        Trigger data collection from OpenWeathermap.org for city Warsaw and store it in local DB
+        """
         weather_data = WeatherMapClient.get_weather_by_city("Warsaw")
         serializer = CityWeatherSerializer(data=weather_data)
         if serializer.is_valid():
@@ -16,6 +20,9 @@ class CityWeatherView(viewsets.ViewSet):
         return Response({"error": "something went wrong"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
     def list(self, request):
-        queryset = CityWeather.objects.all()
+        """
+        Fetch all data from local DB
+        """
+        queryset = CityWeather.objects.all().order_by('-timestamp')
         serializer = CityWeatherSerializer(queryset, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
