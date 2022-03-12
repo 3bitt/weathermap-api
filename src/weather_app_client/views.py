@@ -14,10 +14,8 @@ class CityWeatherView(viewsets.ViewSet):
             serializer.save()
             return Response({"result":"Weather data collected"}, status=status.HTTP_200_OK)
         return Response({"error": "something went wrong"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
-    
 
     def list(self, request):
         queryset = CityWeather.objects.all()
-        # print(queryset[0].weather)
         serializer = CityWeatherSerializer(queryset, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
