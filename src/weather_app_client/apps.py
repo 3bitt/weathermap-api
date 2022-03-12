@@ -2,5 +2,5 @@ from django.apps import AppConfig
 
 
 class WeatherAppClientConfig(AppConfig):
-    default_auto_field = 'django.db.models.BigAutoField'
-    name = 'weather_app_client'
+    default_auto_field = "django.db.models.BigAutoField"
+    name = "weather_app_client"
