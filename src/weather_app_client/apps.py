@@ -8,5 +8,5 @@ class WeatherAppClientConfig(AppConfig):
     
     def ready(self):
         from . import scheduler
-        if os.environ.get('RUN_MAIN', None) != 'true':
+        if os.environ.get("RUN_MAIN", None) != "true":
             scheduler.start_scheduler()

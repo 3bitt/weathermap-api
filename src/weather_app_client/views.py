@@ -6,7 +6,7 @@ from weather_app_client.weathermap_client import WeatherMapClient
 
 
 class CityWeatherView(viewsets.ViewSet):
-    http_method_names = ['get', 'post', 'options']
+    http_method_names = ["get", "post", "options"]
     
     def create(self, request):
         """
@@ -23,6 +23,6 @@ class CityWeatherView(viewsets.ViewSet):
         """
         Fetch all data from local DB
         """
-        queryset = CityWeather.objects.all().order_by('-timestamp')
+        queryset = CityWeather.objects.all().order_by("-timestamp")
         serializer = CityWeatherSerializer(queryset, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)

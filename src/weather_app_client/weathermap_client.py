@@ -17,7 +17,7 @@ class WeatherMapClient:
             "appid": self.api_key
         }
         try:
-            request = requests.get(resource_url, params=query_params)
+            response = requests.get(resource_url, params=query_params)
         except requests.exceptions.RequestException as e:
             raise APIException(e)
-        return request.json()
+        return response.json()
