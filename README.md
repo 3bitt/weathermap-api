@@ -45,3 +45,17 @@ Return list of data stored in local DB in json format
 Trigger data collection from openwathermap.org for city Warsaw and save it in local DB
 
 > [POST] /trigger
+
+
+### API documentation
+
+Interactive web interface (no resource URL, just host root)
+> [GET] /
+
+documentation in json format
+
+> [GET] /swagger.json
+
+documentation in yaml format
+
+> [GET] /swagger.yaml
